@@ -36,7 +36,7 @@ void LinkedList::show(){
 	Node *cur = head;
 	int index = 0;
 	while(cur != NULL){
-		cout << "index: "<< index << "value: " << cur->data << endl; 
+		cout << "index: "<< index << " value: " << cur->data << endl; 
 		cur = cur->next;
 		index++;
 	}
