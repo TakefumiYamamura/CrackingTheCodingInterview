@@ -14,11 +14,11 @@ void merge(vector<int> a, vector<int> b, int aSize, int bSize){
 			continue;
 		}
 		//can remove this section
-		if(itrB < 0){
-			a[i] = a[itrA];
-			itrA--;
-			continue;
-		}
+		// if(itrB < 0){
+		// 	a[i] = a[itrA];
+		// 	itrA--;
+		// 	continue;
+		// }
 		if(a[itrA] > b[itrB]){
 			tmp = a[itrA];
 			itrA--;
