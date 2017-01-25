@@ -21,5 +21,4 @@ void postOrder(node *root){
 	postOrder(root->left);
 	postOrder(root->right);
 	print(root);
-
 }
