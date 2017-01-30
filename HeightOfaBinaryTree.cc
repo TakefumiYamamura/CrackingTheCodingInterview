@@ -1,5 +1,5 @@
-// #include <iostream>
-// #include <queue>
+#include <iostream>
+#include <queue>
 
 // struct node
 // {
@@ -9,19 +9,26 @@
 
 // };
 
-// using namespace std;
+using namespace std;
+
+struct nodeWithDepth
+{
+	node n;
+	int depth;
+};
+
+int getHeight(Node* root){
+	vector<nodeWithDepth> q;
+	nodeWithDepth tmp = {*root, 0};
+	q.push(tmp);
+	while(!q.empty()){
+		nodeWithDepth cur = q.front();
+		q.pop();
+		if(cur->right)
+
+		q.push(cur->left)
+		q.push(cur->right)
+	}
 
 
-int maxDepth = 0;
-
-void recursive(Node* cur, int depth){
-	if(cur == NULL) return;
-	maxDepth = max(maxDepth, depth);
-	recursive(cur->left, depth+1);
-	recursive(cur->right, depth+1);
-}
-
-int height(Node* root){
-	recursive(root, 0);
-	return maxDepth;
 }

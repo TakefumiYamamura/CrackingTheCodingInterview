@@ -44,7 +44,7 @@ public:
 
 
 int main(){
-	Parens p = Parens(5);
+	Parens p = Parens(3);
 	vector<string> ans = p.exec();
 	for (int i = 0; i < ans.size(); ++i)
 	{
