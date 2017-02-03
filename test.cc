@@ -13,5 +13,8 @@ void makeHand(string str, int d, int n){
 }
 
 int main(){
-	makeHand("", 0, 2);
+	int n;
+	cin >> n;
+	makeHand("", 0, n);
+	cout << INT_MIN << endl;
 }

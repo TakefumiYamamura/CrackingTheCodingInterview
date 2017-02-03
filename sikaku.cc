@@ -68,6 +68,7 @@ public:
 				cout << 1 << endl;
 				return;
 			}
+			//正方形ではないが、全ての角度が90度の時は長方形
 			cout << 2 << endl;
 		}else{
 			cout << 0 << endl;
