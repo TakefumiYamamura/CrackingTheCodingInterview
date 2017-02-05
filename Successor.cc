@@ -7,49 +7,48 @@
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
-class Solution {
-private:
-	vector<TreeNode*> nodes;
-public:
-	void traverse(TreeNode* node){
-		if(node == NULL) return;
-		traverse(node->left);
-		nodes.push_back(node);
-		traverse(node->right);
-	}
+// class Solution {
+// public:
+// 	TreeNode* searchMostLeft(TreeNode* node){
+// 		assert(node != NULL);
+// 		if(node->left == NULL) return node;
+// 		return searchMostLeft(node->left);
+// 	}
 
-    TreeNode* inorderSuccessor(TreeNode* root, TreeNode* p) {
-    	traverse(root);
-    	for (int i = 0; i < nodes.size()-1; ++i)
-    	{
-    		if(nodes[i] == p){
-    			return nodes[i+1];
-    		}
-    	}
-    	return NULL;
-    }
-};
+//     TreeNode* inorderSuccessor(TreeNode* p) {
+//     	if(p == NULL){
+//     		return NULL;
+//     	}
+//     	if(p->right != NULL){
+//     		return searchMostLeft(p->right);
+//     	}
+//     	TreeNode* cur = p;
+//     	while(cur->parent != NULL){
+//     		if(cur->parent->left == cur){
+//     			return cur->parent;
+//     		}
+//     		cur = cur->parent;
+//     	}
+//     	return NULL;
+//     }
+// };
 
 class Solution {
 public:
     TreeNode* inorderSuccessor(TreeNode* root, TreeNode* p) {
-    	TreeNode* cur = p;
-    	if(cur == NULL){
+    	if(p == NULL || root == NULL){
     		return NULL;
-    	}else{
-    		cur = cur->right;
     	}
-    	while(cur != NULL && cur != ){
-    		cur = cur->left
-    	}
-
-    	traverse(root);
-    	for (int i = 0; i < nodes.size()-1; ++i)
-    	{
-    		if(nodes[i] == p){
-    			return nodes[i+1];
+    	TreeNode *ans = NULL;
+    	TreeNode *cur = root;
+    	while(cur != NULL){
+    		if(cur->val > p->val){
+    			ans = cur;
+    			cur = cur->left;
+    		}else{
+    			cur = cur->right;
     		}
     	}
-    	return NULL;
+    	return ans;
     }
 };
