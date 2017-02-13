@@ -1,4 +1,3 @@
-
 class Solution {
 	map<pair<int, int>, bool> hash;
 public:

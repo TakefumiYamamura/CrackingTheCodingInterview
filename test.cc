@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <string>
 using namespace std;
 
 struct TreeNode {
@@ -28,9 +29,11 @@ TreeNode* testFunc(int i){
 
 int main(){
 	// testFunc(3);
-	vector<int> test;
-	test.push_back(1);
-	auto itr = lower_bound(test.begin(), test.end(), 1);
-	cout << *itr << endl;
+	string test = "abc";
+	cout << test.substr(0, 2) << endl; 
+	// vector<int> test;
+	// test.push_back(1);
+	// auto itr = lower_bound(test.begin(), test.end(), 1);
+	// cout << *itr << endl;
 
 }
