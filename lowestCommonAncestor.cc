@@ -7,7 +7,6 @@
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
-
 struct dpTree{
 	TreeNode* parent;
 	TreeNode* child;
@@ -25,22 +24,25 @@ private:
 public:
 	bool haveChild(TreeNode* root, TreeNode* target){
 		if(root == NULL) return false;
-		dpTree tmp = {root, target};
+		// dpTree tmp = {root, target};
+		// if(hash.find(tmp) != hash.end()){
+		// 	return hash[tmp];
+		// }
 		if(root == target){
-			hash[tmp] = true;
+			// hash[tmp] = true;
 			return true;
 		}
-		if(hash.find(tmp) != hash.end()){
-			return hash[tmp];
-		}
 		bool ans = haveChild(root->left, target) || haveChild(root->right, target);
-		hash[tmp] = ans;
+		// hash[tmp] = ans;
 		return ans;
 	}
 
 	TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
 		queue<TreeNode*> que;
 		que.push(root);
+		if(!(haveChild(cur, p) && haveChild(cur, q))){
+			return NULL;
+		}
 		while(!que.empty()){
 			TreeNode* cur = que.front();
 			que.pop();
@@ -51,17 +53,12 @@ public:
 			if(haveChild(cur->left, q) && haveChild(cur->right, p)){
 				return cur;
 			}
-			if((cur == q) && haveChild(cur, p)){
-				return cur;
-			}
-			if((cur == p) && haveChild(cur, q)){
-				return cur;
-			}
+			if(cur == p || cur == q) return cur;
 			if(haveChild(cur->left, p) && haveChild(cur->left, q)){
 				que.push(cur->left);
+			}else{
+				que.push(cur->right);
 			}
-			que.push(cur->right);
-			que.push(cur->left);
 		}
 		return NULL;
 	}
