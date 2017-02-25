@@ -1,26 +1,38 @@
+#include <vector>
 #include <iostream>
 #include <string>
+
 using namespace std;
+class Solver
+{
+public:
+    Solver(){}
+    string stringCompression(string str){
+        string ans = "";
+        if(str.length() == 1) return str;
+        char before = str[0];
+        int count = 1;
+        for (int i = 1; i < str.length(); ++i)
+        {
+            if(before != str[i]){
+                ans += before + to_string(count);
+                count = 1;
+                before = str[i];
+            }else{
+                count++;
+            }
+        }
+        ans += before + to_string(count);
+        if(ans.length() >= str.length()) return str;
+        return ans;
 
-string compression(string str){
-	string ans = "";
-	for (int i = 0; i < str.length(); ++i)
-	{
-		int j = i;
-		int count = 0;
-		while(str[i] == str[j]){
-			count++;
-			j++;
-		}
-		ans += str[i];
-		ans += to_string(count);
-		i = j-1;
-	}
-	return ans;
-}
-
+    }
+};
 
 int main(){
-	cout << compression("aabcccccaaa") << endl;
-
+    Solver s = Solver();
+    cout << s.stringCompression("aaa") << endl;
+    cout << s.stringCompression("abcde") << endl;
+    cout << s.stringCompression("aaaabbbbbbccdeffff") << endl;
+    cout << s.stringCompression("aaaabbbbbbccdeffffg") << endl;
 }
