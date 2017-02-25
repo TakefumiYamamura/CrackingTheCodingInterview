@@ -14,7 +14,7 @@ public:
         ListNode* sentinel = new ListNode(-1);
         sentinel->next = head;
         ListNode* before = sentinel;
-        for (int i = 0; i < n; ++i)
+        for (int i = 0; i < n-1; ++i)
         {
             first = first->next;
             if(first == NULL) return NULL;
