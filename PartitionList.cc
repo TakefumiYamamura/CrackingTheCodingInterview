@@ -9,27 +9,25 @@
 class Solution {
 public:
     ListNode* partition(ListNode* head, int x) {
-        ListNode* beforeHead = NULL;
-        ListNode* beforeEnd = NULL;
-        ListNode* afterHead = NULL;
-        ListNode* afterEnd = NULL;
-        ListNode* tmp = head;
-        while(tmp != NULL){
-        	if(tmp->val < x){
-        		beforeEnd = tmp;
-        		beforeEnd->next = (ListNode *)malloc(sizeof(ListNode));
-        		if(beforeHead == NULL) beforeHead = beforeEnd;
-        		beforeEnd = beforeEnd->next;
-        	}else{
-        		afterEnd = tmp;
-        		afterEnd->next = (ListNode *)malloc(sizeof(ListNode));
-        		if(afterHead = NULL) afterHead = afterEnd;
-        		afterEnd = afterEnd->next;
-        	}
-        	tmp = tmp->next;
+        ListNode* beforeSentinel = new ListNode(-1);
+        ListNode* afterSentinel = new ListNode(-1);
+        ListNode* beforeTail = beforeSentinel;
+        ListNode* afterTail = afterSentinel;
+
+        ListNode* cur = head;
+        while(cur != NULL){
+            if(cur->val < x){
+                beforeTail->next = new ListNode(cur->val);
+                beforeTail = beforeTail->next;
+            }else{
+                afterTail->next = new ListNode(cur->val);
+                afterTail = afterTail->next;
+            }
+            ListNode* next = cur->next;
+            delete cur;
+            cur = next;
         }
-        if(beforeEnd == NULL) return afterHead;
-        beforeEnd->next = afterHead;
-        return beforeHead;
+        beforeTail->next = afterSentinel->next;
+        return beforeSentinel->next;
     }
 };
