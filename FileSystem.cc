@@ -23,7 +23,6 @@ public:
 
 	// directory とfile で異なる挙動
 	void delete(){
-
 	}
 
 	//

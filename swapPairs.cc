@@ -13,7 +13,7 @@ public:
     	ListNode* tail = sentinel;
     	tail->next = head;
 
-    	while(tail && tail->next){
+    	while(tail && tail->next && tail->next->next){
     		ListNode* first = tail->next;
     		ListNode* second = tail->next->next;
     		ListNode* third = NULL;
