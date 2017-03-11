@@ -5,22 +5,14 @@
 
 using namespace std;
 
-enum AnimalType
-{
-	DOG = 0,
-	CAT = 1,
-};
-
 class Animal
 {
 public:
 	string name;
 	int order;
-	AnimalType type;
 	Animal();
-	Animal(string n, AnimalType t){
+	Animal(string n){
 		name = n;
-		type = t;
 	}
 	virtual ~Animal(){};
 	virtual void cry() = 0;
@@ -31,7 +23,7 @@ class Dog : public Animal
 public:
 	Dog();
 	virtual ~Dog(){};
-	Dog(string n, AnimalType t):Animal(n, t){};
+	Dog(string n):Animal(n){};
 	virtual void cry() override{
 		cout << "bow" << endl;
 	}
@@ -42,7 +34,7 @@ class Cat : public Animal
 public:
 	Cat();
 	virtual ~Cat(){};
-	Cat(string n, AnimalType t):Animal(n, t){};
+	Cat(string n):Animal(n){};
 	virtual void cry() override{
 		cout << "nya-nya" << endl;
 	}
@@ -62,9 +54,9 @@ public:
 	void enqueue(Animal* anm){
 		anm->order = order;
 		order++;
-		if(anm->type == DOG){
+		if(dynamic_cast<Dog*>(anm) != NULL){
 			dogqueue.push(anm);
-		}else if(anm->type == CAT){
+		}else if(dynamic_cast<Cat*>(anm) !=NULL){
 			catqueue.push(anm);
 		}
 	}
@@ -111,20 +103,20 @@ public:
 int main(){
 	AnimalShelter as = AnimalShelter();
 	// as.dequeueAny();
-	as.enqueue(new Dog("dog1", DOG));
-	as.enqueue(new Cat("cat1", CAT));
-	as.enqueue(new Dog("dog2", DOG));
-	as.enqueue(new Cat("cat2", CAT));
+	as.enqueue(new Dog("dog1"));
+	as.enqueue(new Cat("cat1"));
+	as.enqueue(new Dog("dog2"));
+	as.enqueue(new Cat("cat2"));
 	for (int i = 0; i < 3; ++i)
 	{
 		Animal* tmp = as.dequeueAny();
 		cout << tmp->name << endl;
 		tmp->cry();
 	}
-	as.enqueue(new Dog("dog3", DOG));
-	as.enqueue(new Cat("cat3", CAT));
-	as.enqueue(new Cat("cat4", CAT));
-	as.enqueue(new Cat("cat5", CAT));
+	as.enqueue(new Dog("dog3"));
+	as.enqueue(new Cat("cat3"));
+	as.enqueue(new Cat("cat4"));
+	as.enqueue(new Cat("cat5"));
 	for (int i = 0; i < 2; ++i)
 	{
 		Animal* tmp = as.dequeueCat();
