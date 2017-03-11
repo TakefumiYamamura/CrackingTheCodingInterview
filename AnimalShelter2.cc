@@ -56,7 +56,7 @@ public:
 		order++;
 		if(dynamic_cast<Dog*>(anm) != NULL){
 			dogqueue.push(anm);
-		}else if(dynamic_cast<Cat*>(anm) !=NULL){
+		}else if(dynamic_cast<Cat*>(anm) !=　NULL){
 			catqueue.push(anm);
 		}
 	}
