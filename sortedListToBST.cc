@@ -18,7 +18,8 @@
 class Solution {
 public:
 	TreeNode* fetchMiddle(ListNode* head, ListNode* tail){
-		if(head == NULL) return;
+		if(head == NULL) return NULL;
+		if(head == tail) return NULL;
 		ListNode* fast = head;
 		ListNode* slow = head;
 		while(fast && fast->next){
@@ -28,13 +29,13 @@ public:
 		}
 		TreeNode* middle = new TreeNode(slow->val);
 		middle->left = fetchMiddle(head, slow);
-		middle->right = fetchMiddle(slow, tail);
-		return slow;
+		middle->right = fetchMiddle(slow->next, tail);
+		return middle;
 	}
 
     TreeNode* sortedListToBST(ListNode* head) {
-    	TreeNode* top = fetchMiddle(head->val, NULL);
-    	top->left = fetchMiddle()
+    	length = fetchLength(head);
+    	TreeNode* top = fetchMiddle(head, NULL);
     	return top;
     }
 
