@@ -7,6 +7,8 @@
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
+// stackで解く場合には次に小さい要素が常にノードの右下にある木の一番左下に存在することを使う。
+
 class BSTIterator {
 private:
    	queue<TreeNode*> tree_queue;
