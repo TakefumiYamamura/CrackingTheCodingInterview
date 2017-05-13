@@ -16,11 +16,11 @@ void master_mind(string ans, string input){
 	for (int i = 0; i < ans.size(); ++i)
 	{
 		if(ans[i] == input[i]) hit++;
-		ust.inset(ans[i]);
+		ust.insert(input[i]);
 	}
 	for (int i = 0; i < ans.size(); ++i)
 	{
-		if(ans[i] != input[i] && ust.find(input[i]) != ust.end()) brow++;
+		if(ans[i] != input[i] && ust.find(ans[i]) != ust.end()) brow++;
 	}
 
 	cout << hit << " : " << brow << endl;
