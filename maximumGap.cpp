@@ -3,7 +3,6 @@ public:
     int maximumGap(vector<int>& nums) {
         int size = nums.size();
         if(size < 2) return 0;
-        // vector<bool> check = vector<bool>(1 << 32, false);
         unordered_map<int, bool> um;
         int min_v = INT_MAX;
         int max_v = INT_MIN; 

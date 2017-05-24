@@ -85,8 +85,4 @@ int main(){
 	cout << bst.getRankOfNumber(1) << endl;
 	cout << bst.getRankOfNumber(3) << endl;
 	cout << bst.getRankOfNumber(4) << endl;
-
-
-
 }
-

@@ -144,7 +144,7 @@ public:
 			for(int j = state_node.min_y; j <= state_node.max_y; ++j) 
 			{
 				if(i == state_node.cur_x && j == state_node.cur_y){
-					cout << "⭐️" << " ";
+					cout << "🍄" << " ";
 					continue;
 				}
 				unordered_map<int, unordered_map<int, Color> > boards = state_node.boards;
@@ -171,5 +171,5 @@ int main(){
 		ra.printKMoves(i);
 		cout << endl;
 	}
-	ra.printKMoves(2000);
+	// ra.printKMoves(5000);
 }

@@ -26,7 +26,6 @@ public:
             return false;
         }
         int idx = *(um[val].begin());
-        cout << idx << endl;
         um[val].erase(idx);
         int last = arr[arr.size() - 1];
         um[last].insert(idx);
