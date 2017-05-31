@@ -1,23 +1,32 @@
+#include <assert.h>
 class Solution {
+private:
+    string str;
+    string ans;
+    int max_len;
 public:
-    bool check_paindrome(string s){
-        for(int i = 0; i < s.size(); i++){
-            if(s[i] != s[s.size() - 1 - i]) return false;
+    void extend_paindrome(int l, int r){
+        if(l < 0 || r >= str.length()) return;  
+        if(str[l] == str[r]){
+            int len = r - l + 1;
+            if(max_len < len){
+                max_len = len;
+                ans = str.substr(l, r - l + 1);
+            }
+            extend_paindrome(l-1, r+1);
         }
-        return true;
     }
     
     string longestPalindrome(string s) {
-        for(int i = s.size(); i > 0; i--) {
-            for (int j = 0; j + i <= s.size(); ++j)
-            {
-                string tmp = s.substr(j, i);
-                if(check_paindrome(tmp)){
-                    return tmp;
-                }
-            }
-
+        max_len = 0;
+        str = s;
+        for (int i = 0; i < s.length(); ++i)
+        {
+            extend_paindrome(i, i);
+            extend_paindrome(i, i+1);
         }
-        return "";
+
+        return ans;
     }
 };
+
